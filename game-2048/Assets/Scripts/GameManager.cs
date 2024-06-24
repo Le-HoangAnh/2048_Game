@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
-    [SerializeField] private TileBoard board;
-    [SerializeField] private CanvasGroup gameOver;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI hiscoreText;
+    public TileBoard board;
+    public CanvasGroup gameOver;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI hightScoreText;
 
     private int score;
-    public int Score => score;
-
-    private void Awake()
-    {
-        if (Instance != null) {
-            DestroyImmediate(gameObject);
-        } else {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 
     private void Start()
     {
         NewGame();
+        PlayAgain();
+    }
+
+    public void PlayAgain()
+    {
+        // reset score and save hight score when click Try Again 
+        SetScore(0);
+        hightScoreText.text = LoadHightScore().ToString();
+
+        // appear game over screen
+        gameOver.alpha = 0f;
+        gameOver.interactable = false;
+
+        // update board state
+        board.ClearBoard();
+        board.CreateTile();
+        board.CreateTile();
+        board.enabled = true;
     }
 
     public void NewGame()
     {
-        // reset score
+        // reset score when click New Game
         SetScore(0);
-        hiscoreText.text = LoadHiscore().ToString();
-
-        // hide game over screen
-        gameOver.alpha = 0f;
-        gameOver.interactable = false;
 
         // update board state
         board.ClearBoard();
@@ -82,21 +82,22 @@ public class GameManager : MonoBehaviour
         this.score = score;
         scoreText.text = score.ToString();
 
-        SaveHiscore();
+        SaveHightScore();
     }
 
-    private void SaveHiscore()
+    private void SaveHightScore()
     {
-        int hiscore = LoadHiscore();
+        int hightScore = LoadHightScore();
 
-        if (score > hiscore) {
-            PlayerPrefs.SetInt("hiscore", score);
+        if (score > hightScore) 
+        {
+            PlayerPrefs.SetInt("hightScore", score);
         }
     }
 
-    private int LoadHiscore()
+    private int LoadHightScore()
     {
-        return PlayerPrefs.GetInt("hiscore", 0);
+        return PlayerPrefs.GetInt("hightScore", 0);
     }
 
 }

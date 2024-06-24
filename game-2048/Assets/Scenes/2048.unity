@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 132951619}
   - component: {fileID: 132951618}
   m_Layer: 5
-  m_Name: New Game
+  m_Name: NewGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1583,7 +1583,7 @@ GameObject:
   - component: {fileID: 1186592818}
   - component: {fileID: 1186592820}
   m_Layer: 5
-  m_Name: Game Over
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1963,7 +1963,7 @@ MonoBehaviour:
   board: {fileID: 997205597}
   gameOver: {fileID: 1186592820}
   scoreText: {fileID: 791552736}
-  hiscoreText: {fileID: 67294057}
+  hightScoreText: {fileID: 67294057}
 --- !u!4 &1601929140
 Transform:
   m_ObjectHideFlags: 0
@@ -2338,7 +2338,7 @@ GameObject:
   - component: {fileID: 1868971470}
   - component: {fileID: 1868971469}
   m_Layer: 5
-  m_Name: Button
+  m_Name: TryAgainButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2411,7 +2411,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1601929139}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewGame
+        m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
